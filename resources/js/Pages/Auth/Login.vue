@@ -29,6 +29,9 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
+                <inertia-link v-if="canRegister" :href="route('register')" class="mr-4 underline text-sm text-gray-600 hover:text-gray-900">
+                    Register
+                </inertia-link>
                 <inertia-link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
                     Forgot your password?
                 </inertia-link>
@@ -63,6 +66,7 @@
 
         props: {
             canResetPassword: Boolean,
+            canRegister: Boolean,
             status: String
         },
 
