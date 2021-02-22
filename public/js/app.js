@@ -23953,7 +23953,9 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+/* harmony import */ var primevue_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primevue/config */ "./node_modules/primevue/config/config.esm.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // Import modules...
+
 
 
 
@@ -23972,7 +23974,7 @@ var el = document.getElementById('app');
   methods: {
     route: route
   }
-}).use(_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.plugin).mount(el);
+}).use(_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.plugin).use(primevue_config__WEBPACK_IMPORTED_MODULE_2__.default).mount(el);
 
 /***/ }),
 
@@ -41424,6 +41426,74 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./node_modules/primevue/config/config.esm.js":
+/*!****************************************************!*\
+  !*** ./node_modules/primevue/config/config.esm.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "usePrimeVue": () => (/* binding */ usePrimeVue)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+const defaultOptions = {
+    ripple: false,
+    locale: {
+        accept: 'Yes',
+        reject: 'No',
+        choose: 'Choose',
+        upload: 'Upload',
+        cancel: 'Cancel',
+        dayNames: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        dayNamesShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+        dayNamesMin: ["Su","Mo","Tu","We","Th","Fr","Sa"],
+        monthNames: ["January","February","March","April","May","June","July","August","September","October","November","December"],
+        monthNamesShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        today: 'Today',
+        clear: 'Clear',
+        weekHeader: 'Wk',
+        firstDayOfWeek: 0,
+        dateFormat: 'mm/dd/yy',
+        weak: 'Weak',
+        medium: 'Medium',
+        strong: 'Strong',
+        passwordPrompt: 'Enter a password'
+    }
+};
+
+const PrimeVueSymbol = Symbol();
+
+function usePrimeVue() {
+    const PrimeVue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(PrimeVueSymbol);
+    if (!PrimeVue) {
+        throw new Error('PrimeVue is not installed!');
+    } 
+    
+    return PrimeVue;
+}
+
+var PrimeVue = {
+    install: (app, options) => {
+        let configOptions = options ? {...defaultOptions, ...options} : {...defaultOptions};
+        const PrimeVue = {
+            config: (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)(configOptions)
+        };
+        app.config.globalProperties.$primevue = PrimeVue;
+        app.provide(PrimeVueSymbol, PrimeVue);
+    }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PrimeVue);
+
 
 
 /***/ }),
